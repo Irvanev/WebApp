@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<div class="container-md d-flex justify-content-center">
+    <h1>Models</h1>
+</div>
+
+<div class="container-md d-flex justify-content-center">
+    <form th:action="@{/models/add}"
+          th:method="post"
+          th:object="${modelsModel}">
+        <div class="mb-3">
+            <label for="userName" class="col-form-label">Name</label>
+            <input type="text" class="form-control" id="userName" th:field="*{name}"
+                   th:errorclass="is-invalid">
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error message</p>
+        </div>
+        <div class="mb-3">
+            <label for="brand" class="col-form-label">Brand</label>
+            <select class="form-select" aria-label="Default select example" id="brand" th:field="*{brandName}" th:errorclass="is-invalid">
+                <option
+                        th:each="model : ${availableBrands}"
+                        th:value="${model.name}"
+                        th:text="${model.name}">
+                </option>
+            </select>
+            <p th:if="${#fields.hasErrors('brandName')}" th:errors="*{brandName}">Error message</p>
+        </div>
+        <div class="mb-3">
+            <label for="imageURL" class="col-form-label">Image URL</label>
+            <input type="text" class="form-control" id="imageURL" th:field="*{imageURL}"
+                   th:errorclass="is-invalid">
+            <p th:if="${#fields.hasErrors('imageURL')}" th:errors="*{imageURL}">Error message</p>
+        </div>
+        <fieldset class="mb-3">
+            <legend>Choose Education Level</legend>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input th:field="*{categoryEnum}"
+                           th:value="Car"
+                           th:errorclass="is-invalid"
+                           type="radio" class="form-check-input" name="educationLevel"/>
+                    <span>Car</span>
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input th:field="*{categoryEnum}"
+                           th:value="Motorcycle"
+                           th:errorclass="is-invalid"
+                           type="radio" class="form-check-input" name="educationLevel"/>
+                    <span>Motorcycle</span>
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input th:field="*{categoryEnum}"
+                           th:value="Truck"
+                           th:errorclass="is-invalid"
+                           type="radio" class="form-check-input " name="educationLevel"/>
+                    <span>Truck</span>
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input th:field="*{categoryEnum}"
+                           th:value="Bus"
+                           th:errorclass="is-invalid"
+                           type="radio" class="form-check-input " name="educationLevel"/>
+                    <span>Bus</span>
+                </label>
+            </div>
+            <small th:if="${#fields.hasErrors('categoryEnum')}" th:errors="*{categoryEnum}"
+                   class="text-danger">Error message</small>
+        </fieldset>
+
+        <div class="mb-3">
+            <label for="startYear" class="col-form-label">Start Year</label>
+            <input type="number" class="form-control" id="startYear" th:field="*{startYear}" th:errorclass="is-invalid">
+            <p th:if="${#fields.hasErrors('startYear')}" th:errors="*{startYear}">Error message</p>
+        </div>
+
+        <div class="mb-3">
+            <label for="endYear" class="col-form-label">End Year</label>
+            <input type="number" class="form-control" id="endYear" th:field="*{endYear}" th:errorclass="is-invalid">
+            <p th:if="${#fields.hasErrors('startYear')}" th:errors="*{endYear}">Error message</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Brand</button>
+    </form>
+</div>
+
+</body>
+</html>

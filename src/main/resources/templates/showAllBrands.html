@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<div class="container-md d-flex justify-content-center">
+    <div class="align-bottom"><a class="btn btn-info align-bottom"
+                                 th:href="@{/brands/add}">Add brand</a>
+    </div>
+</div>
+
+<div class="container-md d-flex justify-content-center">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody class="align-middle">
+        <tr th:each="brand : ${brands}">
+
+            <td>
+            <a th:href="@{/brands/showBrandInfo/{name}(name=${brand.name})}" th:text="${brand.name}"></a>
+            </td>
+
+            <td>
+                <div class="align-bottom"><a class="btn btn-danger align-bottom"
+                                             th:href="@{/brands/brandDelete/{name}(name=${brand.name})}">Delete
+                    brand</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

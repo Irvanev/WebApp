@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<div class="container-md d-flex justify-content-center">
+    <div class="align-bottom"><a class="btn btn-info align-bottom"
+                                 th:href="@{/models/add}">Add model</a>
+    </div>
+</div>
+
+<div class="container-md d-flex justify-content-center">
+
+    <div class="card mt-3 m-md-3" th:each="model : ${models}" style="width: 18rem;">
+        <img th:src="${model.imageURL}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${model.brandName} + ' ' + ${model.name}">Card title</h5>
+            <p class="card-text" th:text="${model.categoryEnum}"></p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

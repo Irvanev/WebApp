@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title" th:text="${brandsInfo.name}"></h5>
+        <p class="card-text" th:text="${brandsInfo.id}"></p>
+        <p class="card-text" th:text="${brandsInfo.created}"></p>
+        <p class="card-text" th:text="${brandsInfo.modified}"></p>
+    </div>
+</div>
+
+</body>
+</html>
