@@ -49,7 +49,7 @@ public class UserController {
             attributes.addFlashAttribute("usersModel", addUserDto);
             attributes.addFlashAttribute("org.springframework.validation.BindingResult.usersModel",
                     result);
-            return "redirect:/users/all";
+            return "redirect:/users/add";
         }
         userService.addUser(addUserDto);
         return "redirect:/users/all";

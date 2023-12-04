@@ -5,13 +5,23 @@
 
 <div th:replace="fragments/navbar">Navbar</div>
 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title" th:text="${brandsInfo.name}"></h5>
-        <p class="card-text" th:text="${brandsInfo.id}"></p>
-        <p class="card-text" th:text="${brandsInfo.created}"></p>
-        <p class="card-text" th:text="${brandsInfo.modified}"></p>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <img src="https://zabavnikplus.ru/wp-content/uploads/a/f/f/aff9509d690e4476c3203901949b2edf.gif" class="card-img-top" alt="Brand Image">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${brandsInfo.name}"></h5>
+                    <p class="card-text">ID: <span th:text="${brandsInfo.id}"></span></p>
+                    <p class="card-text">Created: <span th:text="${brandsInfo.created}"></span></p>
+                    <p class="card-text">Modified: <span th:text="${brandsInfo.modified}"></span></p>
+                    <div class="d-grid gap-2">
+                        <a th:href="@{/brands/brandDelete/{name}(name=${brandsInfo.name})}" class="btn btn-danger">Удалить</a>
+                        <a href="#" class="btn btn-primary">Изменить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
