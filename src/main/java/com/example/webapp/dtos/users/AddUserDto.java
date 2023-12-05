@@ -1,12 +1,14 @@
 package com.example.webapp.dtos.users;
 
 import com.example.webapp.constants.RoleEnum;
+import com.example.webapp.util.UniqueUserName;
 import jakarta.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
 
 public class AddUserDto {
+    @UniqueUserName
     private String userName;
     private RoleEnum roleName;
     private String firstName;
