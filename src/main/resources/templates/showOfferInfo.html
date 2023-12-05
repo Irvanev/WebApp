@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <img th:src="${offerInfo.imageURL}" class="card-img-top" alt="Brand Image">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${offerInfo.userName}"></h5>
+                    <p class="card-text">Model name: <span th:text="${offerInfo.modelName}"></span></p>
+                    <p class="card-text">Engine type: <span th:text="${offerInfo.engineEnum}"></span></p>
+                    <p class="card-text">Transmission type: <span th:text="${offerInfo.transmissionEnum}"></span></p>
+                    <p class="card-text">Mileage: <span th:text="${offerInfo.mileage}"></span></p>
+                    <p class="card-text">Modified: <span th:text="${offerInfo.price}"></span></p>
+                    <p class="card-text">Year: <span th:text="${offerInfo.year}"></span></p>
+                    <p class="card-text">Created: <span th:text="${offerInfo.created}"></span></p>
+                    <p class="card-text">Modified: <span th:text="${offerInfo.modified}"></span></p>
+                    <p class="card-text">Description: <span th:text="${offerInfo.description}"></span></p>
+                    <div class="d-grid gap-2">
+                        <a th:href="@{/offers/offerDelete/{id}(id=${offerInfo.id})}" class="btn btn-danger">Удалить</a>
+                        <a href="#" class="btn btn-primary">Изменить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
