@@ -68,4 +68,26 @@ public class BrandController {
 
         return "showBrandInfo";
     }
+
+    @GetMapping("/editBrand/{name}")
+    public String editBrandForm(@PathVariable("name") String name, Model model) {
+
+        AddBrandDto brand = brandService.findBrandByName(name);
+
+        model.addAttribute("brand", brand);
+        return "updateBrand";
+    }
+    @PostMapping("/editBrand/{name}")
+    public String editBrand(@PathVariable("name") String name, @Valid AddBrandDto addBrandDto, BindingResult result, RedirectAttributes attributes) {
+
+        if (result.hasErrors()) {
+            attributes.addFlashAttribute("brand", addBrandDto);
+            attributes.addFlashAttribute("org.springframework.validation.BindingResult.brand",
+                    result);
+            return "redirect:/brands/editBrand/{name}";
+        }
+
+        brandService.editBrand(name, addBrandDto);
+        return "redirect:/brands/all";
+    }
 }

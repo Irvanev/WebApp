@@ -45,7 +45,7 @@ public class AddOfferDto {
     }
 
     @NotEmpty(message = "Description cannot be null or empty!")
-    @Size(min = 2, max=100, message = "Description should be at least 2 characters long!")
+    @Size(min = 2, max=200, message = "Description should be at least 2 characters long!")
     public String getDescription() {
         return description;
     }

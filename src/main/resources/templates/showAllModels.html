@@ -13,18 +13,21 @@
     </div>
 </div>
 
-<div class="container-md d-flex justify-content-center">
-
-    <div class="card mt-3 m-md-3" th:each="model : ${models}" style="width: 18rem;">
-        <img th:src="${model.imageURL}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title" th:text="${model.brandName} + ' ' + ${model.name}">Card title</h5>
-            <p class="card-text" th:text="${model.categoryEnum}"></p>
-            <a th:href="@{/models/showModelInfo/{name}(name=${model.name})}" class="btn btn-primary">Go somewhere</a>
+<div class="container-md">
+    <div class="row justify-content-center">
+        <div class="col-md-3" th:each="model : ${models}">
+            <div class="card mt-3 m-md-3" style="width: 18rem; height: 350px">
+                <img th:src="${model.imageURL}" class="card-img-top img-fluid" style="max-height: 200px;" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title" th:text="${model.brandName} + ' ' + ${model.name}">Card title</h5>
+                    <p class="card-text" th:text="${model.categoryEnum}"></p>
+                    <a th:href="@{/models/showModelInfo/{name}(name=${model.name})}" class="btn btn-primary">More detailed</a>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>
+
 
 </body>
 </html>

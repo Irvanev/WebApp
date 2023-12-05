@@ -12,4 +12,6 @@ public interface BrandService {
     public List<ShowAllBrandsDto> allBrand();
     public void removeBrand(String name);
     public ShowBrandInfoDto showBrandInfo(String name);
+    public void editBrand(String originalBrandName, AddBrandDto brandDto);
+    public AddBrandDto findBrandByName(String brandName);
 }

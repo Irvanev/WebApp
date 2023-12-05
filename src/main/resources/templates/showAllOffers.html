@@ -28,7 +28,7 @@
         <tr th:each="off : ${allOffers}">
             <td>
                 <a th:href="@{/offers/showOfferInfo/{id}(id=${off.id})}">
-                    <img th:src="${off.imageURL}" alt="Photo" width="100" height="100">
+                    <img th:src="${off.imageURL}" alt="Photo" width="150" height="100">
                 </a>
             </td>
 
