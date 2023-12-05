@@ -3,6 +3,7 @@ package com.example.webapp.services;
 import com.example.webapp.dtos.brands.AddBrandDto;
 import com.example.webapp.dtos.brands.ShowAllBrandsDto;
 import com.example.webapp.dtos.brands.ShowBrandInfoDto;
+import com.example.webapp.dtos.brands.UpdateBrandDto;
 
 import java.util.List;
 

@@ -2,16 +2,12 @@ package com.example.webapp.dtos.offers;
 
 import com.example.webapp.constants.EngineEnum;
 import com.example.webapp.constants.TransmissionEnum;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import org.hibernate.validator.constraints.Length;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class AddOfferDto {
+public class ShowOfferInfoDto {
+    private String id;
     private String modelName;
     private String userName;
     private String description;
@@ -24,8 +20,14 @@ public class AddOfferDto {
     private LocalDateTime created;
     private LocalDateTime modified;
 
-    @NotEmpty(message = "Name of model cannot be null or empty!")
-    @Size(min = 2, message = "Name of model should be at least 2 characters long!")
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getModelName() {
         return modelName;
     }
@@ -34,8 +36,6 @@ public class AddOfferDto {
         this.modelName = modelName;
     }
 
-    @NotEmpty(message = "User name cannot be null or empty!")
-    @Size(min = 2, message = "User name should be at least 2 characters long!")
     public String getUserName() {
         return userName;
     }
@@ -44,8 +44,6 @@ public class AddOfferDto {
         this.userName = userName;
     }
 
-    @NotEmpty(message = "Description cannot be null or empty!")
-    @Size(min = 2, max=100, message = "Description should be at least 2 characters long!")
     public String getDescription() {
         return description;
     }
@@ -54,7 +52,6 @@ public class AddOfferDto {
         this.description = description;
     }
 
-    @NotNull(message = "Please choose an engine type!")
     public EngineEnum getEngineEnum() {
         return engineEnum;
     }
@@ -63,8 +60,6 @@ public class AddOfferDto {
         this.engineEnum = engineEnum;
     }
 
-    @NotEmpty(message = "URL of image cannot be null or empty!")
-    @Length(min = 10, max = 200, message = "URL of image must be more than 10 characters!")
     public String getImageURL() {
         return imageURL;
     }
@@ -73,8 +68,6 @@ public class AddOfferDto {
         this.imageURL = imageURL;
     }
 
-    @Min(value = 1, message = "Mileage must be a positive number!")
-    @NotNull(message = "Mileage must not be null or empty!")
     public int getMileage() {
         return mileage;
     }
@@ -83,8 +76,6 @@ public class AddOfferDto {
         this.mileage = mileage;
     }
 
-    @Min(value = 1, message = "Price must be a positive number!")
-    @NotNull(message = "Price must not be null or empty!")
     public BigDecimal getPrice() {
         return price;
     }
@@ -93,7 +84,6 @@ public class AddOfferDto {
         this.price = price;
     }
 
-    @NotNull(message = "Please choose an transmission type!")
     public TransmissionEnum getTransmissionEnum() {
         return transmissionEnum;
     }
@@ -102,8 +92,6 @@ public class AddOfferDto {
         this.transmissionEnum = transmissionEnum;
     }
 
-    @Min(value = 1, message = "Year must be a positive number!")
-    @NotNull(message = "Year must not be null or empty!")
     public int getYear() {
         return year;
     }

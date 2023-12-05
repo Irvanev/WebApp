@@ -8,10 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -54,5 +51,19 @@ public class ModelController {
         }
         modelService.addModel(addModelDto);
         return "redirect:/models/all";
+    }
+
+    @GetMapping("/modelDelete/{name}")
+    public String removeOffer(@PathVariable("name") String name) {
+        modelService.removeModel(name);
+
+        return "redirect:/models/all";
+    }
+
+    @GetMapping("/showModelInfo/{name}")
+    public String showModelInfo(@PathVariable("name") String name, Model model) {
+        model.addAttribute("modelInfo", modelService.showModelInfo(name));
+
+        return "showModelInfo";
     }
 }

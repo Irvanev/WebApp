@@ -80,4 +80,9 @@ public class Users extends BaseEntity {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
+
+    @Override
+    public String toString() {
+        return userName;
+    }
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <img th:src="${usersInfo.imageURL}" class="card-img-top" alt="Brand Image">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${usersInfo.userName}"></h5>
+                    <p class="card-text">Name: <span th:text="${usersInfo.lastName} + ' ' + ${usersInfo.firstName}"></span></p>
+                    <p class="card-text">Password: <span th:text="${usersInfo.password}"></span></p>
+                    <p class="card-text">Status: <span th:text="${usersInfo.active}"></span></p>
+                    <p class="card-text">Created: <span th:text="${usersInfo.created}"></span></p>
+                    <p class="card-text">Modified: <span th:text="${usersInfo.modified}"></span></p>
+                    <p class="card-text">Role: <span th:text="${usersInfo.roleEnum}"></span></p>
+                    <div class="d-grid gap-2">
+                        <a th:href="@{/brands/userDelete/{name}(name=${usersInfo.userName})}" class="btn btn-danger">Удалить</a>
+                        <a href="#" class="btn btn-primary">Изменить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

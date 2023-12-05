@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<div class="container-md d-flex justify-content-center">
+    <h1>Models</h1>
+</div>
+
+<div class="container-md d-flex justify-content-center">
+    <form th:action="@{/offers/add}"
+          th:method="post"
+          th:object="${offersModel}">
+
+        <div class="mb-3">
+            <label for="model" class="col-form-label">Model</label>
+            <select class="form-select" aria-label="Default select example" id="model" th:field="*{modelName}" th:errorclass="is-invalid">
+                <option
+                        th:each="model : ${availableModels}"
+                        th:value="${model.name}"
+                        th:text="${model.name}">
+                </option>
+            </select>
+            <p th:if="${#fields.hasErrors('modelName')}" th:errors="*{modelName}">Error message</p>
+        </div>
+
+        <div class="mb-3">
+            <label for="userName" class="col-form-label">User Name</label>
+            <select class="form-select" aria-label="Default select example" id="userName" th:field="*{userName}" th:errorclass="is-invalid">
+                <option
+                        th:each="user : ${availableUsers}"
+                        th:value="${user.userName}"
+                        th:text="${user.userName}">
+                </option>
+            </select>
+            <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Error message</p>
+        </div>
+
+        <div class="mb-3">
+            <label for="imageURL" class="col-form-label">Image URL</label>
+            <input type="text" class="form-control" id="imageURL" th:field="*{imageURL}"
+                   th:errorclass="is-invalid">
+            <p th:if="${#fields.hasErrors('imageURL')}" th:errors="*{imageURL}">Error message</p>
+        </div>
+        <fieldset class="mb-3">
+            <legend>Choose Engine type</legend>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input th:field="*{engineEnum}"
+                           th:value="GASOLINE"
+                           th:errorclass="is-invalid"
+                           type="radio" class="form-check-input" name="educationLevel"/>
+                    <span>Gasoline</span>
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input th:field="*{engineEnum}"
+                           th:value="DIESEL"
+                           th:errorclass="is-invalid"
+                           type="radio" class="form-check-input" name="educationLevel"/>
+                    <span>Diesel</span>
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input th:field="*{engineEnum}"
+                           th:value="ELECTRIC"
+                           th:errorclass="is-invalid"
+                           type="radio" class="form-check-input " name="educationLevel"/>
+                    <span>Electric</span>
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input th:field="*{engineEnum}"
+                           th:value="HYBRID"
+                           th:errorclass="is-invalid"
+                           type="radio" class="form-check-input" name="educationLevel"/>
+                    <span>Hybrid</span>
+                </label>
+            </div>
+            <small th:if="${#fields.hasErrors('engineEnum')}" th:errors="*{engineEnum}"
+                   class="text-danger">Error message</small>
+        </fieldset>
+
+        <div class="mb-3">
+            <label for="desc" class="col-form-label">Description</label>
+            <input type="text" class="form-control" id="desc" th:field="*{description}" th:errorclass="is-invalid">
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error message</p>
+        </div>
+
+        <fieldset class="mb-3">
+            <legend>Choose Transmission type</legend>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input th:field="*{transmissionEnum}"
+                           th:value="MANUAL"
+                           th:errorclass="is-invalid"
+                           type="radio" class="form-check-input" name="transmissionEnum"/>
+                    <span>Manual</span>
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input th:field="*{transmissionEnum}"
+                           th:value="AUTOMATIC"
+                           th:errorclass="is-invalid"
+                           type="radio" class="form-check-input" name="transmissionEnum"/>
+                    <span>Automatic</span>
+                </label>
+            </div>
+            <small th:if="${#fields.hasErrors('transmissionEnum')}" th:errors="*{transmissionEnum}"
+                   class="text-danger">Error message</small>
+        </fieldset>
+
+        <div class="mb-3">
+            <label for="mileage" class="col-form-label">Mileage</label>
+            <input type="number" class="form-control" id="mileage" th:field="*{mileage}" th:errorclass="is-invalid">
+            <p th:if="${#fields.hasErrors('mileage')}" th:errors="*{mileage}">Error message</p>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="col-form-label">Price</label>
+            <input type="number" class="form-control" id="price" th:field="*{price}" th:errorclass="is-invalid">
+            <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Error message</p>
+        </div>
+
+        <div class="mb-3">
+            <label for="endYear" class="col-form-label">Year</label>
+            <input type="number" class="form-control" id="endYear" th:field="*{year}" th:errorclass="is-invalid">
+            <p th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Error message</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Brand</button>
+    </form>
+</div>
+
+</body>
+</html>

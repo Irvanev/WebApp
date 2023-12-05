@@ -1,6 +1,7 @@
 package com.example.webapp.controllers;
 
 import com.example.webapp.dtos.brands.AddBrandDto;
+import com.example.webapp.dtos.brands.UpdateBrandDto;
 import com.example.webapp.services.BrandService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class BrandController {
     @ModelAttribute("brandsModel")
     public AddBrandDto initBrand() {
         return new AddBrandDto();
+    }
+
+    @ModelAttribute("brandsUpdateModel")
+    public UpdateBrandDto updateBrand() {
+        return new UpdateBrandDto();
     }
 
     @GetMapping("/all")

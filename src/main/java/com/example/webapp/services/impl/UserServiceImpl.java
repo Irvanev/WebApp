@@ -1,7 +1,9 @@
 package com.example.webapp.services.impl;
 
+import com.example.webapp.dtos.brands.ShowBrandInfoDto;
 import com.example.webapp.dtos.users.AddUserDto;
 import com.example.webapp.dtos.users.ShowAllUsersDto;
+import com.example.webapp.dtos.users.ShowUserInfoDto;
 import com.example.webapp.models.Users;
 import com.example.webapp.repositories.RoleRepository;
 import com.example.webapp.repositories.UserRepository;
@@ -38,6 +40,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll().stream().map(users -> modelMapper.map(users, ShowAllUsersDto.class))
                 .collect(Collectors.toList());
     }
+
+    public ShowUserInfoDto showUserInfo(String name) {
+        return modelMapper.map(userRepository.findByUserName(name), ShowUserInfoDto.class);
+    }
+
     public void removeUser(String userName) {
         userRepository.deleteByUserName(userName);
     }

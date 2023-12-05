@@ -61,4 +61,11 @@ public class UserController {
 
         return "redirect:/users/all";
     }
+
+    @GetMapping("/showUserInfo/{name}")
+    public String showUserInfo(@PathVariable("name") String name, Model model) {
+        model.addAttribute("usersInfo", userService.showUserInfo(name));
+
+        return "showUserInfo";
+    }
 }

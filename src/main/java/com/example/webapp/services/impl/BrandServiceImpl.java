@@ -3,6 +3,7 @@ package com.example.webapp.services.impl;
 import com.example.webapp.dtos.brands.AddBrandDto;
 import com.example.webapp.dtos.brands.ShowAllBrandsDto;
 import com.example.webapp.dtos.brands.ShowBrandInfoDto;
+import com.example.webapp.dtos.brands.UpdateBrandDto;
 import com.example.webapp.models.Brand;
 import com.example.webapp.repositories.BrandRepository;
 import com.example.webapp.services.BrandService;
@@ -38,6 +39,8 @@ public class BrandServiceImpl implements BrandService {
     public ShowBrandInfoDto showBrandInfo(String name) {
         return modelMapper.map(brandRepository.findByName(name), ShowBrandInfoDto.class);
     }
+
+
     public void removeBrand(String name) {
         brandRepository.deleteByName(name);
     }

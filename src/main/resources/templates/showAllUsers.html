@@ -28,7 +28,9 @@
 
         <tr th:each="user : ${usersAll}">
             <td><img th:src="${user.imageURL}" alt="Photo" width="100" height="100"></td>
-            <td th:text="${user.userName}"></td>
+            <td>
+                <a th:href="@{/users/showUserInfo/{name}(name=${user.userName})}" th:text="${user.userName}"></a>
+            </td>
             <td th:text="${user.lastName} + ' ' + ${user.firstName}"></td>
             <td th:text="${user.roleName}"></td>
         </tr>
