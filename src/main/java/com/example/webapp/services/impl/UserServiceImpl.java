@@ -1,10 +1,13 @@
 package com.example.webapp.services.impl;
 
 import com.example.webapp.dtos.brands.ShowBrandInfoDto;
+import com.example.webapp.dtos.offers.ShowAllOffersDto;
 import com.example.webapp.dtos.users.AddUserDto;
 import com.example.webapp.dtos.users.ShowAllUsersDto;
 import com.example.webapp.dtos.users.ShowUserInfoDto;
+import com.example.webapp.models.Offer;
 import com.example.webapp.models.Users;
+import com.example.webapp.repositories.OfferRepository;
 import com.example.webapp.repositories.RoleRepository;
 import com.example.webapp.repositories.UserRepository;
 import com.example.webapp.services.UserService;
@@ -20,11 +23,14 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final OfferRepository offerRepository;
 
-    public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository, RoleRepository roleRepository,
+                           OfferRepository offerRepository) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.offerRepository = offerRepository;
     }
 
     public void addUser(AddUserDto addUserDto) {
@@ -42,8 +48,18 @@ public class UserServiceImpl implements UserService {
     }
 
     public ShowUserInfoDto showUserInfo(String name) {
-        return modelMapper.map(userRepository.findByUserName(name), ShowUserInfoDto.class);
+        List<Offer> userOffers = offerRepository.findByUserName(name);
+
+        List<ShowAllOffersDto> userOffersDto = userOffers.stream()
+                .map(offer -> modelMapper.map(offer, ShowAllOffersDto.class))
+                .collect(Collectors.toList());
+
+        ShowUserInfoDto userInfoDto = modelMapper.map(userRepository.findByUserName(name), ShowUserInfoDto.class);
+        userInfoDto.setOffersDto(userOffersDto);
+
+        return userInfoDto;
     }
+
 
     public void removeUser(String userName) {
         userRepository.deleteByUserName(userName);

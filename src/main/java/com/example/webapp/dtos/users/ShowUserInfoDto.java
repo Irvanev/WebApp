@@ -1,8 +1,10 @@
 package com.example.webapp.dtos.users;
 
 import com.example.webapp.constants.RoleEnum;
+import com.example.webapp.dtos.offers.ShowAllOffersDto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ShowUserInfoDto {
     private String imageURL;
@@ -14,6 +16,7 @@ public class ShowUserInfoDto {
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime modified;
+    private List<ShowAllOffersDto> offersDto;
 
     public String getImageURL() {
         return imageURL;
@@ -85,5 +88,13 @@ public class ShowUserInfoDto {
 
     public void setModified(LocalDateTime modified) {
         this.modified = modified;
+    }
+
+    public List<ShowAllOffersDto> getOffersDto() {
+        return offersDto;
+    }
+
+    public void setOffersDto(List<ShowAllOffersDto> offersDto) {
+        this.offersDto = offersDto;
     }
 }

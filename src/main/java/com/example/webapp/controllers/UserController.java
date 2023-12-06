@@ -65,6 +65,7 @@ public class UserController {
     @GetMapping("/showUserInfo/{name}")
     public String showUserInfo(@PathVariable("name") String name, Model model) {
         model.addAttribute("usersInfo", userService.showUserInfo(name));
+        model.addAttribute("userOffers", userService.showUserInfo(name).getOffersDto());
 
         return "showUserInfo";
     }
